@@ -1,19 +1,28 @@
 
 
-
+import Hero.Character;
 
 public class Main {
 
 
 
+
+
     public static void main(String[] args) {
-         Menu menu=new Menu();
-        menu.ChooseTypeOfHero();
+
+
+
+
+        Menu menu=new Menu();
+
+        menu.beginGame();
+
         menu.exit();
-        menu.playGame();
 
-
-
+        Game game=new  Game();
+        game.playGame();
+        menu.exit();
+        game.playGame();
 
 
 

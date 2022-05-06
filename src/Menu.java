@@ -6,73 +6,109 @@ import Hero.Wizard;
 import java.util.Scanner;
 
 public class Menu {
+    Scanner sc = new Scanner(System.in);
+
+public void beginGame(){
+    System.out.println("\n" +
+            " (                                                                                      \n" +
+            " )\\ )                                           )    (                                  \n" +
+            "(()/(                 (                  (   ( /(    )\\ )  (       )  (  (              \n" +
+            " /(_))   (    (       )\\   (    (       ))\\  )\\())  (()/(  )(   ( /(  )\\))(  (    (     \n" +
+            "(_))_    )\\   )\\ )   ((_)  )\\   )\\ )   /((_)(_))/    ((_))(()\\  )(_))((_))\\  )\\   )\\ )  \n" +
+            " |   \\  ((_) _(_/(  _ | | ((_) _(_/(  (_))  | |_     _| |  ((_)((_)_  (()(_)((_) _(_/(  \n" +
+            " | |) |/ _ \\| ' \\))| || |/ _ \\| ' \\)) / -_) |  _|  / _` | | '_|/ _` |/ _` |/ _ \\| ' \\)) \n" +
+            " |___/ \\___/|_||_|  \\__/ \\___/|_||_|  \\___|  \\__|  \\__,_| |_|  \\__,_|\\__, |\\___/|_||_|  \n" +
+            "                                                                     |___/              \n");
+
+
+    System.out.println("Bienvenue aventurier.re dans le jeu 'DONJON ET DRAGON'. " );
+
+
+    System.out.println("Avant tout, tu as le choix de tes actions.");
+
+    exit();
 
 
 
-    public  void ChooseTypeOfHero() {
-        Scanner sc = new Scanner(System.in);
+    System.out.println("Avant tout, tu peux choisir les charactéristiques de ton personnage. Pour cela, c'est très simple. Il te suffit de suivre les consignes qui te sont indiqués.");
 
 
+
+    Character hero= this.chooseTypeOfHero();
+
+}
+
+
+
+
+    public Character chooseTypeOfHero() {
 
 
         System.out.println("Quel hero es tu? (g = guerrier, m = magicien )");
         String choice = sc.nextLine();
 
+        while (!choice.equals("g") && !choice.equals("m")) {
+
+            System.out.println("Quel hero es tu? (g = guerrier.re, m = magicien.ne )");
+            choice = sc.nextLine();
+
+
+        }
+        System.out.println("Comment tu t'appelle? Si tu décide ne pas choisir, tu auras un nom par défault");
+        String nameHero=setNameHero();
 
 
 
-            System.out.println("Comment tu t'appelle?");
+        System.out.println("quelle est ta force? Ta force doit être comprise entre 5 et 10 (je te conseille fortement de suivre cette règle)");
 
-            String nameHero = sc.nextLine();
+        int strongHero=setStrongHero();
 
-            System.out.println("Force?");
-
-            int strongHero = sc.nextInt();
-
-            System.out.println("Vie");
-
-            int life = sc.nextInt();
-
-            if (choice.equals("m")) {
-
-                System.out.println("Hero: Magicien");
-
-                Wizard wizard = new Wizard();
-
-                setAttributHero(wizard, nameHero, strongHero, life);
+        if (strongHero>10||strongHero<5){
+            System.out.println("Dommage le pouilleux...");
+            nameHero ="Pouilleux";
+        }
 
 
-            } else if (choice.equals("g")) {
-
-                System.out.println("Hero: Guerrier");
-
-                Warrior warrior = new Warrior();
-                setAttributHero(warrior, nameHero, strongHero, life);
+        System.out.println("combien de vies à tu? Tu dois choisir une valeur entre 3 et 6");
 
 
-            }
+
+        int life=setLifeHero();
+
+        if (life<3||life>6){
+            System.out.println("Oups tes mains ont glissés je crois...");
+            System.out.println("Recommence? Tu dois choisir une valeur entre 3 et 6");
+
+             life = sc.nextInt();
+            System.out.println("Ma patience a des limites.");
+            nameHero="Connard";
 
 
+        }
+
+        if (choice.equals("m")) {
+
+            System.out.println("Tu es un.e  magicien.ne. La magie n'a aucun secret pour toi. ");
+
+            Wizard hero = new Wizard(nameHero, strongHero, life);
+            System.out.println("Bonjour "+hero.getName()+" , tu as une force de "+hero.getStrong()+" , tu as "+hero.getLifeLevel()+" vies" );
+            return hero;
+
+        } else if (choice.equals("g")) {
+
+            System.out.println("Tu n'es pas du genre à faire des marches pacifistes pour le climat. Tu es un.e guerrier.re. ");
+
+            Warrior hero = new Warrior(nameHero, strongHero, life);
+            System.out.println("Tu t'appelle "+hero.getName()+". Tu as une force de "+hero.getStrong()+" et tu as "+hero.getLifeLevel()+" vies" );
+            return hero;
+
+
+
+        }
+        Warrior hero = new Warrior("Harry",8,7);
+        return hero;
 
     }
-
-
-        public void setAttributHero (Character hero, String nameHero,int strong, int level){
-
-            hero.setName(nameHero);
-            hero.setStrong(strong);
-            hero.setLifeLevel(level);
-            System.out.println("nom: " + hero.getName() + " | force: " + hero.getStrong() + " | Vie: " + hero.getLifeLevel());
-
-        }
-
-
-        public void getMinMax ( int attribut, int defaultAttribut, int min, int max){
-            if (attribut < min || attribut > max) {
-                attribut = defaultAttribut;
-            }
-
-        }
 
         public void exit() {
 
@@ -80,25 +116,34 @@ public class Menu {
         exit.chooseExit();
     }
 
-    public void playGame(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Ok, nous pouvons commencer ...");
-        System.out.println("Appuie sur d pour lancer le dé");
-
-        String dice = sc.nextLine();
-        GameBoard gameBoard= new GameBoard();
-
-        if(dice.equals("d")){
-
-            gameBoard.heroPosition();
-
-        }
+    public String setNameHero(){
 
 
 
-
+         String nameHero = sc.nextLine();
+        return nameHero;
 
     }
+
+    public int setStrongHero(){
+
+
+
+        int strong = sc.nextInt();
+        return strong;
+
+    }
+    public int setLifeHero(){
+
+
+
+        int life = sc.nextInt();
+        return life;
+
+    }
+
+
+
 
 
 

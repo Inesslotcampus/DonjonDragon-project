@@ -11,10 +11,10 @@ public class Wizard extends Character {
 
 
 
-    public Wizard() {
-        this.setName("Gandalf");
-        this.setStrong(8);
-        this.setLifeLevel(5);
+    public Wizard(String name, int strong, int liveLevel ) {
+        this.setName(name);
+        this.setStrong(strong);
+        this.setLifeLevel(liveLevel);
     }
 
 

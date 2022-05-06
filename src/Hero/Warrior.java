@@ -9,10 +9,10 @@ public class Warrior extends Character {
     public String Arm;
     public String shield;
 
-    public Warrior() {
-        this.setName("Aragorn");
-        this.setStrong(8);
-        this.setLifeLevel(15);
+    public Warrior(String name, int strong, int liveLevel ) {
+        this.setName(name);
+        this.setStrong(strong);
+        this.setLifeLevel(liveLevel);
     }
 
 
