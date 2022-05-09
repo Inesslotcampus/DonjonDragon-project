@@ -140,10 +140,10 @@ public class Menu {
             return life;
         } catch (NumberFormatException e) {
             System.out.println("Le caractère choisit n'est pas un chiffre, une valeur par défaut sera attribué");
-
+            int life = 5;
+            return life;
         }
-        int life = 5;
-        return life;
+
 
     }
 
