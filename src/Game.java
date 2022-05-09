@@ -1,9 +1,10 @@
 import java.util.Scanner;
+import Exception.CharacterOut;
 
 public class Game {
 
 
-    public int position=0;
+    public int position=1;
     public int compt= 0;
 
 
@@ -28,7 +29,7 @@ public class Game {
 
     }
 
-    public void playGame(){
+    public void playGame() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ok, nous pouvons commencer ...");
 
@@ -46,22 +47,33 @@ public class Game {
             if (dice.equals("d")) {
                 compt++;
                 System.out.println( "TOUR "+compt);
+                try {
+                    int move=heroMove();
+                    inputException(move);
 
-                int move=heroMove();
+
                 System.out.println(move);
+                }catch (CharacterOut e){
+                     this.position= 1;
+
+
+                }
 
 
             }
 
         }
-        System.out.println("TU GAGNE!");
+
+            System.out.println("TU GAGNE!");
 
 
 
+    }
+    public void inputException(int move) throws CharacterOut {
+        if(move>63){
+            throw new CharacterOut("Vous avez dépassé l'arrivée");
 
-
-
-
+        }
 
 
     }

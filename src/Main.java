@@ -22,7 +22,7 @@ public class Main {
         Game game=new  Game();
         game.playGame();
         menu.exit();
-        game.playGame();
+
 
 
 
