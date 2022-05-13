@@ -1,13 +1,11 @@
-package Hero;
-
-import java.util.Scanner;
+package Character;
 
 public abstract class Character {
 
     private String name;
     private int lifeLevel;
     private int strong;
-    private String image;
+
 
 public  Character(){
     this.name= "Harry";

@@ -1,7 +1,5 @@
-
-
-import Hero.Character;
-
+import Enemy.Goblin;
+import Case.Case;
 public class Main {
 
 
@@ -13,6 +11,9 @@ public class Main {
 
 
 
+        GameBoard board = new GameBoard();
+        board.addCaselist();
+
         Menu menu=new Menu();
 
         menu.beginGame();
@@ -22,6 +23,9 @@ public class Main {
         Game game=new  Game();
         game.playGame();
         menu.exit();
+
+
+
 
 
 

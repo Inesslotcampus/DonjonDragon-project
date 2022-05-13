@@ -1,7 +1,4 @@
-package Hero;
-
-import Hero.Character;
-
+package Character;
 
 
 public class Wizard extends Character {

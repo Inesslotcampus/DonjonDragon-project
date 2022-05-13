@@ -1,9 +1,9 @@
 
 
-package Hero;
+package Character;
 
 
-import Hero.Character;
+import Character.Character;
 
 public class Warrior extends Character {
     public String Arm;

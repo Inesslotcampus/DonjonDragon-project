@@ -1,12 +1,14 @@
-import Hero.Character;
-import Hero.Warrior;
-import Hero.Wizard;
+import Character.Character;
+import Character.Warrior;
+import Character.Wizard;
 
 
 import java.util.Scanner;
 
 public class Menu {
     Scanner sc = new Scanner(System.in);
+
+
 
     public void beginGame() {
         System.out.println("\n" +
@@ -26,13 +28,13 @@ public class Menu {
 
         System.out.println("Avant tout, tu as le choix de tes actions.");
 
-        exit();
+
 
 
         System.out.println("Avant tout, tu peux choisir les charactéristiques de ton personnage. Pour cela, c'est très simple. Il te suffit de suivre les consignes qui te sont indiqués.");
 
 
-        Character hero = this.chooseTypeOfHero();
+
 
     }
 
@@ -80,6 +82,8 @@ public class Menu {
 
         }
 
+
+
         if (choice.equals("m")) {
 
             System.out.println("Tu es un.e  magicien.ne. La magie n'a aucun secret pour toi. ");
@@ -91,6 +95,7 @@ public class Menu {
         } else if (choice.equals("g")) {
 
             System.out.println("Tu n'es pas du genre à faire des marches pacifistes pour le climat. Tu es un.e guerrier.re. ");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
             Warrior hero = new Warrior(nameHero, strongHero, life);
             System.out.println("Tu t'appelle " + hero.getName() + ". Tu as une force de " + hero.getStrong() + " et tu as " + hero.getLifeLevel() + " vies");
@@ -124,7 +129,9 @@ public class Menu {
             int strong = Integer.parseInt(sc.nextLine());
             return strong;
         } catch (NumberFormatException e) {
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Le caractère choisit n'est pas un chiffre, une valeur par défaut sera attribué");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
         }
         int strong = 5;
@@ -139,7 +146,9 @@ public class Menu {
             int life = Integer.parseInt(sc.nextLine());
             return life;
         } catch (NumberFormatException e) {
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Le caractère choisit n'est pas un chiffre, une valeur par défaut sera attribué");
+            System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             int life = 5;
             return life;
         }
