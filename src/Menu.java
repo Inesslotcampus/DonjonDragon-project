@@ -116,7 +116,7 @@ public class Menu {
 
             Wizard hero = new Wizard(nameHero, strongHero, life);
             System.out.println("Bonjour " + hero.getName() + " , tu as une force de " + hero.getStrong() + " , tu as " + hero.getLifeLevel() + " vies");
-            jdbc.connectToBDD("Wizard", nameHero, life, strongHero);
+            //jdbc.connectToBDD("Wizard", nameHero, life, strongHero);
             return hero;
 
         } else if (choice.equals("g")) {
@@ -126,7 +126,7 @@ public class Menu {
 
             Warrior hero = new Warrior(nameHero, strongHero, life);
             System.out.println("Tu t'appelle " + hero.getName() + ". Tu as une force de " + hero.getStrong() + " et tu as " + hero.getLifeLevel() + " vies");
-            jdbc.connectToBDD("Warrior", hero.getName(), hero.getLifeLevel(), hero.getStrong());
+            //jdbc.connectToBDD("Warrior", hero.getName(), hero.getLifeLevel(), hero.getStrong());
             return hero;
 
 
@@ -204,6 +204,7 @@ public class Menu {
 
 
     }
+
 
 
 }

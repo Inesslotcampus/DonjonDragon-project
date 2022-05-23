@@ -4,11 +4,19 @@ import Enemy.Dragon;
 import Enemy.Goblin;
 import Enemy.Witch;
 
-public abstract class Case {
+import Character.Character;
+
+public abstract class Case implements  InterractiveObject {
     protected String name;
     protected String frenchName;
     protected int strong;
     protected int level;
+
+
+    public int interract(Character hero){
+        System.out.println("y a pas");
+        return 0;
+    };
 
 
 

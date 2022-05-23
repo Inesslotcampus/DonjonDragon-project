@@ -16,10 +16,10 @@ import java.util.List;
 
 public class GameBoard {
 
-    public List list = addCaselist();
+    public ArrayList<Case> list = addCaselist();
 
 
-    public List addCaselist() {
+    public ArrayList<Case> addCaselist() {
 
         ArrayList<Case> list = new ArrayList<>();
 

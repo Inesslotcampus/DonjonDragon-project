@@ -1,24 +1,13 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import Case.Case;
-import Case.Potion.BigPotion;
+import Case.InterractiveObject;
 import Case.Potion.Potion;
-import Case.Potion.StandardPotion;
-import Case.Sort.FireBall;
-import Case.Sort.Sort;
-import Case.Weapon.Club;
 import Exception.CharacterOut;
 import Character.Character;
-import Character.Wizard;
-import Character.*;
-import Case.Weapon.Weapon;
+
 import Enemy.Enemy;
 import Case.Empty;
 import Enemy.SuperStrength;
-
-
-import com.sun.source.tree.WhileLoopTree;
 
 
 public class Game {
@@ -51,126 +40,14 @@ public class Game {
 
     }
 
-    public void interaction(Object obj, int compt) {
-        
-        
-        if (obj instanceof Potion && hero instanceof Character) {
+    public void interaction(InterractiveObject obj) {
 
-            String potionName = ((Potion) obj).getName();
+            int result = obj.interract(hero);
 
-            int potion = ((Potion) obj).getLevel();
-
-
-            int levelHero = interractPotion(obj, potion);
-
-
-            hero.setLifeLevel(levelHero);
-
-
-        } else if (obj instanceof SuperStrength superStrength) {
-
-
-            int objWithStrength = superStrength.strength();
-
-            int heroStrong = hero.getStrong();
-
-
-            System.out.println("Tu gagne " + objWithStrength + " de force");
-
-            heroStrong = heroStrong + objWithStrength;
-
-            hero.setStrong(heroStrong);
-
-            if(compt>15){
-
-                int objWithSuperStrength = superStrength.superStrength();
-                System.out.println("Wow encore plus de force");
-                heroStrong = heroStrong + objWithSuperStrength;
-
-                hero.setStrong(heroStrong);
-
-
-            }
-
-
-
-
-
-        } else if (obj instanceof Enemy enemy) {
-
-
-            System.out.println("Bats toi ma puuuuuuce ");
-
-
-
-
-
-            System.out.println("Tu veux te battre ?(o) pour oui et (f) pour fuire ");
-
-            String choiceFight = sc.nextLine();
-
-
-
-            while (!choiceFight.equals("o") && !choiceFight.equals("f")) {
-                System.out.println("Tu veux te battre ?(o) pour oui et (f) pour fuir ");
-
-                choiceFight = sc.nextLine();
-
-            }
-
-
-            if (choiceFight.equals("o")) {
-
-                while (hero.getLifeLevel() > 0) {
-
-
-
-                    if (enemy.getLevel() <= 0) {
-
-                        System.out.println("le héro a gagné!!!");
-                        break;
-
-                    } else {
-                        System.out.println("le hero lance son attaque");
-
-                        int enemyStrong = enemy.getStrong();
-
-                        int heroStrong=hero.getStrong();
-
-
-                        enemy.setLifeLevel(enemy.getLevel()-heroStrong);
-
-                        System.out.println("le méchant contre attaque");
-
-                        int heroLifeLevel = hero.getLifeLevel();
-
-                        System.out.println("Le héro perd " + enemyStrong + " point de vie");
-
-                        heroLifeLevel = heroLifeLevel - enemyStrong;
-
-                        hero.setLifeLevel(heroLifeLevel);
-
-
-                    }
-                }
-
-            } else if (choiceFight.equals("f")) {
-
+            if (result<0){
                 returnToCase();
-
-
             }
 
-
-        } else if (obj instanceof Empty) {
-            System.out.println("Y a rien");
-
-
-        } else {
-            System.out.println("Y a pas");
-
-
-        }
 
 
     }
@@ -182,18 +59,6 @@ public class Game {
 
         System.out.println("tu es à la case " + position);
     }
-
-    public int interractPotion(Object potion, int levelPotion) {
-
-        int levelHero = hero.getLifeLevel();
-
-        System.out.println("WoW! Tu deviens super pompette. Tu gagne " + levelPotion + " points de vie ");
-        return levelHero = levelHero + levelPotion;
-
-
-    }
-
-
 
 
     public void playGame() {
@@ -228,7 +93,7 @@ public class Game {
                     System.out.println(gameBoard.list.get(position));
 
 
-                    interaction(gameBoard.list.get(position),compt);
+                    interaction(gameBoard.list.get(position));
 
 
                 } catch (CharacterOut e) {
