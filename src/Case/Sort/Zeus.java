@@ -2,7 +2,7 @@ package Case.Sort;
 
 public class Zeus extends Sort{
     public Zeus(){
-        super("Zeus", 5, 5,"Zeus");
+        super("Zeus", 2 ,"Zeus");
 
     }
     public String toString(){

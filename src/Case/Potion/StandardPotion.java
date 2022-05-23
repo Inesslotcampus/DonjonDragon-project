@@ -3,10 +3,13 @@ package Case.Potion;
 public class StandardPotion extends Potion{
 
     public StandardPotion(){
-        super("standartPotion", 5, 5,"du sirop de pêche");
+        super("standartPotion","du sirop de pêche", 2);
 
     }
     public String toString(){
         return "Tu tombe sur "+frenchName;
     }
+
+
+
 }

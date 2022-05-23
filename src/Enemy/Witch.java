@@ -1,20 +1,20 @@
 package Enemy;
 
 
-import java.awt.*;
-
-public class Witch extends Enemy {
+public class Witch extends Enemy  {
 
 
 
     public Witch(){
-        super("Witch",5, 5, "un sorcier");
+        super("Witch",2, 9, "un sorcier");
     }
 
-    public String toString(Character hero){
+    public String toString(){
 
         return "Tu tombe sur "+frenchName;
     }
+
+
 
 }
 

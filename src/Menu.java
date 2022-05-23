@@ -3,12 +3,26 @@ import Character.Warrior;
 import Character.Wizard;
 
 
+
 import java.util.Scanner;
 
+/**
+ * la classe menu, qui permet de choisir personnage, sortir du jeu
+
+ */
+
 public class Menu {
+
+    /**
+    * premier attribut sc de type Scanner qui instancie l'objet Scanner
+
+ */
     Scanner sc = new Scanner(System.in);
+    JDBC jdbc = new JDBC();
 
-
+    /**
+     * la méthode beginGame qui permet d'afficher le début du jeu
+     */
 
     public void beginGame() {
         System.out.println("\n" +
@@ -38,11 +52,17 @@ public class Menu {
 
     }
 
+    /**
+     * la méthode chooseTypeOfHero permet de choisir le type de héro, changer ses caractéristiques et instancier un hero;
+     * @return
+     */
+
+
 
     public Character chooseTypeOfHero() {
 
 
-        System.out.println("Quel hero es tu? (g = guerrier, m = magicien )");
+        System.out.println("Quel hero es tu? (g = guerrier.re, m = magicien.ne )");
         String choice = sc.nextLine();
 
         while (!choice.equals("g") && !choice.equals("m")) {
@@ -52,6 +72,8 @@ public class Menu {
 
 
         }
+
+
         System.out.println("Comment tu t'appelle? Si tu décide ne pas choisir, tu auras un nom par défault");
         String nameHero = setNameHero();
 
@@ -63,6 +85,9 @@ public class Menu {
 
         if (strongHero > 10 || strongHero < 5) {
             System.out.println("Dommage le pouilleux...");
+
+            strongHero =5;
+
             nameHero = "Pouilleux";
         }
 
@@ -77,6 +102,7 @@ public class Menu {
             System.out.println("Recommence? Tu dois choisir une valeur entre 3 et 6");
 
             System.out.println("Ma patience a des limites.");
+            life = 3;
             nameHero = "Connard";
 
 
@@ -90,6 +116,7 @@ public class Menu {
 
             Wizard hero = new Wizard(nameHero, strongHero, life);
             System.out.println("Bonjour " + hero.getName() + " , tu as une force de " + hero.getStrong() + " , tu as " + hero.getLifeLevel() + " vies");
+            jdbc.connectToBDD("Wizard", nameHero, life, strongHero);
             return hero;
 
         } else if (choice.equals("g")) {
@@ -99,7 +126,10 @@ public class Menu {
 
             Warrior hero = new Warrior(nameHero, strongHero, life);
             System.out.println("Tu t'appelle " + hero.getName() + ". Tu as une force de " + hero.getStrong() + " et tu as " + hero.getLifeLevel() + " vies");
+            jdbc.connectToBDD("Warrior", hero.getName(), hero.getLifeLevel(), hero.getStrong());
             return hero;
+
+
 
         }
         Warrior hero = new Warrior("Harry", 8, 7);
@@ -107,11 +137,20 @@ public class Menu {
 
     }
 
+    /**
+     * la méthode exit permet au personnage de sortir du jeu
+     */
+
     public void exit() {
 
         Exit exit = new Exit();
         exit.chooseExit();
     }
+
+    /**
+     * La methode setNameHero permet de modifier le nom du personnage avec la variable nameHero qui prend le résultat qu'il a appelé
+     * @return String nameHero
+     */
 
     public String setNameHero() {
 
@@ -121,7 +160,11 @@ public class Menu {
 
     }
 
-
+    /**
+     * La methode setStrongHero permet de modifier la force  du personnage avec la variable Strong qui prend le résultat qu'il a appelé
+     * @throws NumberFormatException
+     * @return int strong
+     */
 
     public int setStrongHero() {
 
@@ -138,6 +181,12 @@ public class Menu {
         return strong;
 
     }
+
+    /**
+     * La methode setLevelHero permet de modifier le niveau de vie  du personnage avec la variable level qui prend le résultat qu'il a appelé
+     * @throws NumberFormatException
+     * @return int level
+     */
 
     public int setLifeHero() {
 

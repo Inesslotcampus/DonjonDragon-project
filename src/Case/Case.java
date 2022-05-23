@@ -10,15 +10,26 @@ public abstract class Case {
     protected int strong;
     protected int level;
 
-    public Case(){
 
-
-    }
 
     public Case(String name, String frenchName){
 
         this.name =name;
         this.frenchName =frenchName;
+
+    }
+    public Case(String name, int strong,String frenchName){
+        this.name =name;
+        this.frenchName =frenchName;
+        this.strong = strong;
+
+
+    }
+    public Case(String name, String frenchName,int level){
+        this.name =name;
+        this.frenchName =frenchName;
+        this.level = level;
+
 
     }
 
@@ -40,9 +51,7 @@ public abstract class Case {
         return name;
     }
 
-    public int getStrong(){
-        return strong;
-    }
+
 
     public int getLevel(){
         return level;

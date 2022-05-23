@@ -19,5 +19,7 @@ public class Exit {
     }
 
 
+    public static interface CharacterHoroOrEnemy {
 
+    }
 }

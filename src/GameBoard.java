@@ -1,23 +1,15 @@
-import Case.Case;
+import Case.*;
 import Case.Empty;
 
-
 //potion
-import Case.Potion.BigPotion;
-import Case.Potion.StandardPotion;
+import Case.Potion.*;
 
 // enemy
-import Enemy.Dragon;
-import Enemy.Goblin;
-import Enemy.Witch;
+import Enemy.*;
 //weapon
-
-import Case.Weapon.Club;
-import Case.Weapon.Sword;
-
+import Case.Weapon.*;
 //sort
-import Case.Sort.FireBall;
-import Case.Sort.Zeus;
+import Case.Sort.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,48 +24,56 @@ public class GameBoard {
         ArrayList<Case> list = new ArrayList<>();
 
 
-        Empty empty = new Empty();
-        Witch witch = new Witch();
-        Dragon dragon = new Dragon();
-        StandardPotion standardPotion = new StandardPotion();
-        FireBall fireBall = new FireBall();
-        Zeus zeus = new Zeus();
-        Club club = new Club();
-        Sword sword = new Sword();
-        Goblin goblin = new Goblin();
-        BigPotion bigPotion = new BigPotion();
+        for (int i = 0; i < 64; i++) {
 
 
-        list.add(empty);
-        list.add(witch);
-        list.add(zeus);
-        list.add(fireBall);
-        list.add(sword);
-        list.add(dragon);
-        list.add(standardPotion);
-        list.add(club);
-        list.add(goblin);
-        list.add(bigPotion);
-        list.add(empty);
-        list.add(witch);
-        list.add(zeus);
-        list.add(fireBall);
-        list.add(sword);
-        list.add(dragon);
-        list.add(standardPotion);
-        list.add(club);
-        list.add(goblin);
-        list.add(bigPotion);
-        list.add(empty);
-        list.add(witch);
-        list.add(zeus);
-        list.add(fireBall);
-        list.add(sword);
-        list.add(dragon);
-        list.add(standardPotion);
-        list.add(club);
-        list.add(goblin);
-        list.add(bigPotion);
+            int index = i;
+
+
+
+            switch (index) {
+
+
+
+
+                case 45, 52, 56, 62:
+                    list.add(new Dragon());
+                    break;
+
+                case 10, 20, 25, 32, 35, 36, 37, 40, 44, 47:
+                    list.add(new Witch());
+                    break;
+                case 3, 6, 9, 12, 15, 18, 21, 24, 27, 30:
+                    list.add(new Goblin());
+                    break;
+
+                case 2, 11, 5, 22, 38:
+                    list.add(new Club());
+                    break;
+                case 19, 26, 42, 53:
+                    list.add(new Sword());
+                    break;
+                case 1, 4, 8, 17, 23:
+                    list.add(new Zeus());
+                    break;
+
+                case 48, 49:
+                    list.add(new FireBall());
+                    break;
+                case 7, 13, 31, 33, 39, 43:
+                    list.add(new StandardPotion());
+                    break;
+
+                case 28, 41:
+                    list.add(new BigPotion());
+                    break;
+
+
+                default:
+                list.add(new Empty());
+
+            }
+        }
 
 
         return list;
