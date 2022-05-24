@@ -1,7 +1,5 @@
 package Case.Sort;
 import Character.Character;
-import Case.InterractiveObject;
-import Enemy.SuperStrength;
 
 import Character.Wizard;
 
@@ -26,6 +24,7 @@ public class Sort extends Case.Case  {
     @Override
     public int interract(Character hero) {
 
+
         if(hero instanceof Wizard) {
             int objWithStrength = this.getStrength();
 
@@ -43,4 +42,7 @@ public class Sort extends Case.Case  {
 
 
     }
+
+
+
 }

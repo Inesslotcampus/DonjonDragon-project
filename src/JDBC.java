@@ -12,15 +12,11 @@ public class JDBC {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from hero");
 
-//        while (resultSet.next()){
-//
-//            System.out.println(resultSet.getString("name")+" Force : "+resultSet.getInt("LeveLife")+" La vie : "+resultSet.getInt("Strength"));
-//
-//        }
+
 
       PreparedStatement myStmt;
       myStmt = connection.prepareStatement("INSERT INTO hero(Type, Name, LeveLife,strength) " +
-              "VALUES ( '" + Type + "','" + Name + "','" + LeveLife + "','" + Strength +  "')");
+              "VALUES ( '" + Type  + "','" + Name + "','" + LeveLife + "','" + Strength +  "') ");
 
       ResultSet myRs= myStmt.executeQuery();
 

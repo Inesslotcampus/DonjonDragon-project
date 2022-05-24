@@ -42,6 +42,8 @@ public class Game {
 
     public void interaction(InterractiveObject obj) {
 
+
+
             int result = obj.interract(hero);
 
             if (result<0){

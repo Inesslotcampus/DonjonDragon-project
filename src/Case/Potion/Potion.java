@@ -26,6 +26,8 @@ public abstract class Potion extends Case  {
         levelHero += pv;
 
         hero.setLifeLevel(levelHero);
+
+
         return 0;
     }
 
